@@ -1,0 +1,79 @@
+﻿@model List<Location.Models.Locationssave>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<link href="~/Content/loader.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="~/Scripts/binddropdown.js"></script>
+<script src="~/Scripts/common.js"></script>
+<script src="~/Scripts/loader.js"></script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ActionLink("Go to Location", "Edit")
+
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                Searching things...
+                @*Please wait while Fetching Data...*@
+            </p>
+        </div>
+    </div>
+
+    <div class="form-horizontal">
+        <h4>Locations</h4>
+        <hr />
+
+        <h5 class="text-success" id="msg"><b>@ViewBag.Message</b></h5>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <button type="button" id="btnDelete" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <select class="form-control btn-secondary" id="countryDropDownList">
+                    <option value="Select">Select</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <select class="form-control btn-secondary" id="stateDropDownList">
+                    <option value="Select">Select</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <select class="form-control btn-secondary" id="cityDropDownList">
+                    <option value="Select">Select</option>
+                </select>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Proceed" id="submitbtn" class="btn btn-default" />
+            </div>
+        </div>*@
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
